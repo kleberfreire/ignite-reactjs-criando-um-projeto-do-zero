@@ -1,0 +1,41 @@
+{
+  "id": "ee6fba7d-3cd7-4c1b-a43d-ef652e9b1b15",
+  "uid": "qui-ad-est",
+  "type": "posts",
+  "data": {
+    "title": "architect killer e-business",
+    "subtitle": "reinvent granular solutions",
+    "author": "optimize holistic e-tailers",
+    "banner": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=900&h=500&fit=crop"
+    },
+    "content": [
+      {
+        "healing": "synthesize end-to-end architectures",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Incididunt nisi sint pariatur esse sint adipisicing ipsum cillum deserunt minim eiusmod consectetur in est sit. Lorem aute minim adipisicing sunt enim excepteur cillum cillum aliquip anim mollit amet.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "healing": "redefine global infrastructures",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Aute fugiat eu commodo commodo eu Lorem. Eiusmod do proident consequat enim sit proident ad id cillum anim velit. Est reprehenderit id elit eiusmod.",
+            "spans": []
+          }
+        ]
+      }
+    ]
+  }
+}
