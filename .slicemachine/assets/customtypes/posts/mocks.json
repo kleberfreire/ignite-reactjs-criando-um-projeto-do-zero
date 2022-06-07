@@ -1,11 +1,11 @@
 {
-  "id": "ee6fba7d-3cd7-4c1b-a43d-ef652e9b1b15",
-  "uid": "qui-ad-est",
+  "id": "874c9169-7537-4f63-affb-cafedb02ddf0",
+  "uid": "non-eos-doloribus",
   "type": "posts",
   "data": {
-    "title": "architect killer e-business",
-    "subtitle": "reinvent granular solutions",
-    "author": "optimize holistic e-tailers",
+    "title": "exploit dot-com mindshare",
+    "subtitle": "envisioneer one-to-one relationships",
+    "author": "orchestrate mission-critical communities",
     "banner": {
       "dimensions": {
         "width": 900,
@@ -13,25 +13,55 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8?w=900&h=500&fit=crop"
     },
     "content": [
       {
-        "healing": "synthesize end-to-end architectures",
+        "heading": "engage user-centric eyeballs",
         "body": [
           {
             "type": "paragraph",
-            "text": "Incididunt nisi sint pariatur esse sint adipisicing ipsum cillum deserunt minim eiusmod consectetur in est sit. Lorem aute minim adipisicing sunt enim excepteur cillum cillum aliquip anim mollit amet.",
+            "text": "Cillum reprehenderit fugiat aliqua voluptate adipisicing incididunt reprehenderit. Et laboris et aute minim. Deserunt ut eu proident magna ullamco mollit.",
             "spans": []
           }
         ]
       },
       {
-        "healing": "redefine global infrastructures",
+        "heading": "transition sexy blockchains",
         "body": [
           {
             "type": "paragraph",
-            "text": "Aute fugiat eu commodo commodo eu Lorem. Eiusmod do proident consequat enim sit proident ad id cillum anim velit. Est reprehenderit id elit eiusmod.",
+            "text": "Magna nulla magna consequat eu ad.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "heading": "engineer revolutionary niches",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Nisi consequat id proident nisi ullamco in. Laboris nisi eiusmod occaecat et aliquip amet laboris pariatur ex voluptate dolore officia sit deserunt laborum.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "heading": "transition turn-key solutions",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Ipsum velit dolor commodo cillum ut voluptate consectetur cupidatat adipisicing laborum eu ad anim tempor mollit.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "heading": "recontextualize scalable markets",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Ullamco eiusmod aliquip voluptate voluptate laborum voluptate.",
             "spans": []
           }
         ]

@@ -46,10 +46,10 @@
         "config": {
           "label": "Content",
           "fields": {
-            "healing": {
+            "heading": {
               "type": "Text",
               "config": {
-                "label": "Healing",
+                "label": "heading",
                 "placeholder": "Título da seção..."
               }
             },

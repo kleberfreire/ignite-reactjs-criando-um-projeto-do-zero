@@ -1,1 +1,27 @@
-// TODO
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+.containerContent {
+  width: 720px;
+  margin: 0 auto;
+  padding: 0 0.625rem;
+}
+
+.info {
+  font-size: 0.875rem;
+  padding-top: 1.5625rem;
+  display: flex;
+
+  div {
+    margin-right: 1.5rem;
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-right: 0.5rem;
+    }
+  }
+}
