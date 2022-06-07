@@ -34,7 +34,7 @@ export default function Post({ post }: PostProps): JSX.Element {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Post | </title>
       </Head>
       <div className={styles.containerMain}>
         <img src={post.data.banner.url} alt="" />
@@ -73,7 +73,7 @@ export default function Post({ post }: PostProps): JSX.Element {
             </div>
 
             {post.data.content.map((content, index) => (
-              <section key={`${index}-${content.heading}`}>
+              <section key={`${index}-${content.heading}`} className={}>
                 <h1>{content.heading}</h1>
                 <div dangerouslySetInnerHTML={{ __html: content.body }} />
               </section>
