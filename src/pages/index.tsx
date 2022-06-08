@@ -30,7 +30,7 @@ interface HomeProps {
   postsPagination: PostPagination;
 }
 
-function formatPosts(postsResponse: any): Post[] {
+function formatPosts(postsResponse): Post[] {
   return postsResponse.results.map(post => ({
     uid: post.uid,
     first_publication_date: post.first_publication_date,
@@ -49,7 +49,6 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
   async function morePosts(): Promise<void> {
     const resultPosts = await fetch(nextPage);
     const postsParser = await resultPosts.json();
-    console.log(postsParser.next_page);
 
     const newPosts = formatPosts(postsParser);
 
