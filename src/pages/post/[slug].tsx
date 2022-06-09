@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
@@ -198,12 +198,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // TODO
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}: GetStaticPropsContext) => {
   const { slug } = params;
 
   const prismic = getPrismicClient({});
 
-  const response = await prismic.getByUID('posts', slug);
+  const response = await prismic.getByUID('posts', slug as string);
 
   const postsResponse = await prismic.getByType('posts', {
     orderings: 'first_publication_date desc',
