@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
 import { TbUser } from 'react-icons/tb';
 import { RichText } from 'prismic-dom';
-import { useState } from 'react';
+import Link from 'next/link';
 import { getPrismicClient } from '../../services/prismic';
 
 import commonStyles from '../../styles/common.module.scss';
@@ -30,6 +30,16 @@ interface Post {
 
 interface PostProps {
   post: Post;
+  pagesNextAndPrevious: {
+    next: {
+      slug: string;
+      title: string;
+    };
+    previous: {
+      slug: string;
+      title: string;
+    };
+  };
 }
 
 function formatPost(data: any): Post {
@@ -51,14 +61,16 @@ function formatPost(data: any): Post {
   };
 }
 
-export default function Post({ post }: PostProps): JSX.Element {
-  const [postData, setPostData] = useState(formatPost(post));
+export default function Post({
+  post,
+  pagesNextAndPrevious,
+}: PostProps): JSX.Element {
   const router = useRouter();
 
   if (router.isFallback) {
     return <div>Carregando...</div>;
   }
-  const postFormatted = formatPost(post);
+  const postData = formatPost(post);
 
   return (
     <>
@@ -115,6 +127,34 @@ export default function Post({ post }: PostProps): JSX.Element {
               </section>
             ))}
           </article>
+
+          <div className={styles.turn_pages}>
+            {pagesNextAndPrevious.previous ? (
+              <div>
+                <Link href={`/post/${pagesNextAndPrevious.previous.slug}`}>
+                  <a>
+                    <p>{pagesNextAndPrevious.previous.title}</p>
+                    Post anterior
+                  </a>
+                </Link>
+              </div>
+            ) : (
+              <div />
+            )}
+
+            {pagesNextAndPrevious.next ? (
+              <div>
+                <Link href={`/post/${pagesNextAndPrevious.next.slug}`}>
+                  <a>
+                    <p>{pagesNextAndPrevious.next.title}</p>
+                    Próximo post
+                  </a>
+                </Link>
+              </div>
+            ) : (
+              <div />
+            )}
+          </div>
         </div>
       </div>
     </>
@@ -155,12 +195,12 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const posts = postsResponse.results.map(post => {
     return {
       slug: post.uid,
-      title: post.data.title,
+      title: post.data?.title,
     };
   });
 
   const pageActual = posts.findIndex(post => post.slug === slug);
-  let pagesNextAndPrevious;
+  let pagesNextAndPrevious = {};
   if (pageActual > 0 && pageActual < posts.length - 1) {
     pagesNextAndPrevious = {
       previous: posts[pageActual - 1],
@@ -184,7 +224,8 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   return {
     props: {
       post: response,
-      pages: pagesNextAndPrevious,
+      pagesNextAndPrevious,
     },
+    revalidate: 60 * 30, // 30 minutes
   };
 };
