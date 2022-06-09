@@ -28,18 +28,20 @@ interface Post {
   };
 }
 
+interface IDataNextAndPrevious {
+  slug: string | false;
+  title: string | false;
+  hasPage: boolean;
+}
+
+interface IPagesNextAndPrevious {
+  next: IDataNextAndPrevious;
+  previous: IDataNextAndPrevious;
+}
+
 interface PostProps {
   post: Post;
-  pagesNextAndPrevious: {
-    next: {
-      slug: string;
-      title: string;
-    };
-    previous: {
-      slug: string;
-      title: string;
-    };
-  };
+  pagesNextAndPrevious: IPagesNextAndPrevious;
 }
 
 function formatPost(data: any): Post {
@@ -71,6 +73,17 @@ export default function Post({
     return <div>Carregando...</div>;
   }
   const postData = formatPost(post);
+
+  let paginationPagesNextAndPrevious;
+
+  if (!pagesNextAndPrevious) {
+    paginationPagesNextAndPrevious = {
+      previous: { slug: '', title: '', hasPage: false },
+      next: { slug: '', title: '', hasPage: false },
+    };
+  } else {
+    paginationPagesNextAndPrevious = pagesNextAndPrevious;
+  }
 
   return (
     <>
@@ -129,11 +142,13 @@ export default function Post({
           </article>
 
           <div className={styles.turn_pages}>
-            {pagesNextAndPrevious.previous ? (
+            {paginationPagesNextAndPrevious.previous.hasPage ? (
               <div>
-                <Link href={`/post/${pagesNextAndPrevious.previous.slug}`}>
+                <Link
+                  href={`/post/${paginationPagesNextAndPrevious.previous.slug}`}
+                >
                   <a>
-                    <p>{pagesNextAndPrevious.previous.title}</p>
+                    <p>{paginationPagesNextAndPrevious.previous.title}</p>
                     Post anterior
                   </a>
                 </Link>
@@ -142,11 +157,13 @@ export default function Post({
               <div />
             )}
 
-            {pagesNextAndPrevious.next ? (
+            {paginationPagesNextAndPrevious.next.hasPage ? (
               <div>
-                <Link href={`/post/${pagesNextAndPrevious.next.slug}`}>
+                <Link
+                  href={`/post/${paginationPagesNextAndPrevious.next.slug}`}
+                >
                   <a>
-                    <p>{pagesNextAndPrevious.next.title}</p>
+                    <p>{paginationPagesNextAndPrevious.next.title}</p>
                     Próximo post
                   </a>
                 </Link>
@@ -192,15 +209,16 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
     orderings: 'first_publication_date desc',
   });
 
-  const posts = postsResponse.results.map(post => {
+  const posts: IDataNextAndPrevious[] = postsResponse.results.map(post => {
     return {
       slug: post.uid,
       title: post.data?.title,
+      hasPage: true,
     };
   });
 
   const pageActual = posts.findIndex(post => post.slug === slug);
-  let pagesNextAndPrevious = {};
+  let pagesNextAndPrevious: IPagesNextAndPrevious;
   if (pageActual > 0 && pageActual < posts.length - 1) {
     pagesNextAndPrevious = {
       previous: posts[pageActual - 1],
@@ -209,7 +227,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   }
   if (pageActual === 0) {
     pagesNextAndPrevious = {
-      previous: false,
+      previous: { slug: '', title: '', hasPage: false },
       next: posts[pageActual + 1],
     };
   }
@@ -217,7 +235,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   if (pageActual === posts.length - 1) {
     pagesNextAndPrevious = {
       previous: posts[pageActual - 1],
-      next: false,
+      next: { slug: '', title: '', hasPage: false },
     };
   }
 
